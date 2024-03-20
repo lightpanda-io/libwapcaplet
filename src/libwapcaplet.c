@@ -11,6 +11,7 @@
 #include <assert.h>
 
 #include "libwapcaplet/libwapcaplet.h"
+#include "utils.h"
 
 #ifndef UNUSED
 #define UNUSED(x) ((x) = (x))
