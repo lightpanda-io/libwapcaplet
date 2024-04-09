@@ -330,6 +330,11 @@ static inline lwc_error lwc_string_caseless_hash_value(
  */
 extern void lwc_iterate_strings(lwc_iteration_callback_fn cb, void *pw);
 
+/**
+ * Iterate the context and free all memory.
+ */
+extern void lwc_deinit_strings(void);
+
 #ifdef __cplusplus
 }
 #endif

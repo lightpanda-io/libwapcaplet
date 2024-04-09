@@ -291,3 +291,32 @@ lwc_iterate_strings(lwc_iteration_callback_fn cb, void *pw)
 		ctx = NULL;
 	}
 }
+
+void
+lwc_deinit_strings()
+{
+	lwc_hash n;
+	lwc_string *str;
+	lwc_string *next;
+
+	if (ctx == NULL)
+		return;
+
+	for (n = 0; n < ctx->bucketcount; ++n) {
+		str = ctx->buckets[n];
+		while (str != NULL) {
+			next = str->next;
+
+#ifndef NDEBUG
+			memset(str, 0xA5, sizeof(*str) + str->len);
+#endif
+
+			LWC_FREE(str);
+			str = next;
+		}
+	}
+
+	free(ctx->buckets);
+	free(ctx);
+	ctx = NULL;
+}
