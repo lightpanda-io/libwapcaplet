@@ -293,7 +293,7 @@ lwc_iterate_strings(lwc_iteration_callback_fn cb, void *pw)
 }
 
 void
-lwc_deinit_strings()
+lwc_deinit_strings(void)
 {
 	lwc_hash n;
 	lwc_string *str;
